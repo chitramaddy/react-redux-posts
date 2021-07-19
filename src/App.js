@@ -1,9 +1,13 @@
 import Posts from './components/Posts';
 import Postform from './components/Postform';
+import store from './components/store.js'
 import './App.css';
+
+import { Provider } from 'react-redux';
 
 function App() {
   return (
+    <Provider store={store}>
     <div className="App">
       <header className="App-header">
         <p>
@@ -14,6 +18,7 @@ function App() {
        <Posts />
       
     </div>
+    </Provider>
   );
 }
 
