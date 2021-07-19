@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { createPost } from '../actions/postActions'
 
 class Postform extends Component {
 
@@ -17,19 +20,11 @@ class Postform extends Component {
         e.preventDefault();
         const post = {
             title: this.state.title,
-            body: this.state.baody
+            body: this.state.body
         }
 
-        fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            body: JSON.stringify(post),
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-        .then(res => res.json())
-        .then(data=>console.log(data));
-
+        this.props.createPost(post);
+       
         this.setState({
             title: ' ',
             body: ' '
@@ -58,4 +53,8 @@ class Postform extends Component {
     }
 }
 
-export default Postform;
+Postform.propTypes = {
+    createPost: PropTypes.func.isRequired
+}
+
+export default connect(null, { createPost })(Postform);

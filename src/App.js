@@ -1,6 +1,6 @@
 import Posts from './components/Posts';
 import Postform from './components/Postform';
-import store from './components/store.js'
+import store from './store.js'
 import './App.css';
 
 import { Provider } from 'react-redux';
